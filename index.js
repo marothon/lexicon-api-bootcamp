@@ -1,5 +1,16 @@
+async function fetchList(url){
+    try{
+        let response = await fetch(url);
+        let data = await response.json()
+        return data;
+    }catch(error){
+        console.error(`Couldn't fetch list from ${url}, reason: ${error.message}`);
+        return [];
+    }
+}
+
 //Exercise 1: Pokémon list
-fetchPokemonList()
+fetchList('https://santosnr6.github.io/Data/pokemons.json')
     .then( (data) => {
         let pokemonList = document.querySelector('.pokemon-list');
         for(pokemon of data){
@@ -13,13 +24,8 @@ fetchPokemonList()
         }
     });
 
-async function fetchPokemonList(){
-    let response = await fetch('https://santosnr6.github.io/Data/pokemons.json');
-    return response.json();
-}
-
 //Exercise 2: Dog list
-fetchDogList()
+fetchList('https://majazocom.github.io/Data/dogs.json')
     .then((data) => {
         let dogList = document.querySelector('.dog-list');
         for(dog of data){
@@ -34,13 +40,8 @@ fetchDogList()
         }
     });
 
-async function fetchDogList(){
-    let response = await fetch('https://majazocom.github.io/Data/dogs.json');
-    return response.json();
-}
-
 //Exercise 3: Book liist
-fetchBookList()
+fetchList('https://majazocom.github.io/Data/books.json')
     .then((data) => {
         let bookList = document.querySelector('.book-list');
         for(book of data){
@@ -58,13 +59,8 @@ fetchBookList()
         }
     });
 
-async function fetchBookList(){
-    let response = await fetch('https://majazocom.github.io/Data/books.json');
-    return response.json();
-}
-
 //Exercise 4: Visitor list
-fetchVisitorList()
+fetchList('https://majazocom.github.io/Data/attendees.json')
     .then((data) => {
         let visitorList = document.querySelector('.visitor-list');
         for(visitor of data){
@@ -82,16 +78,11 @@ fetchVisitorList()
         }
     });
 
-async function fetchVisitorList(){
-    let response = await fetch('https://majazocom.github.io/Data/attendees.json');
-    return response.json();
-}
-
 //Exercise 5: Movie list with searchbar
 setup();
 
 function setup(){
-    fetchMovieList()
+    fetchList('https://santosnr6.github.io/Data/movies_long.json')
         .then((movies) => {
             let movieList = document.querySelector('.movie-list');
             for(movie of movies){
@@ -114,9 +105,4 @@ function setup(){
                 })
             })
         });
-}
-
-async function fetchMovieList(){
-    let response = await fetch('https://santosnr6.github.io/Data/movies_long.json');
-    return response.json();
 }
