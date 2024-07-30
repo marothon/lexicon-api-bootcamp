@@ -24,3 +24,19 @@
         text-align: center;
     }
 }
+
+.visitor-list{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+
+    .visitor{
+        img{
+            border-radius: 1rem;
+            aspect-ratio: 1/2;
+            width: 10rem;
+            object-fit: cover;
+            object-position: center;
+        }
+    }
+}

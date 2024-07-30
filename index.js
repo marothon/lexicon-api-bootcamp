@@ -62,3 +62,28 @@ async function fetchBookList(){
     let response = await fetch('https://majazocom.github.io/Data/books.json');
     return response.json();
 }
+
+//Exercise 4: Visitor list
+fetchVisitorList()
+    .then((data) => {
+        let visitorList = document.querySelector('.visitor-list');
+        for(visitor of data){
+            if(visitor.attending && visitor.allergies.length > 0){
+                visitorList.insertAdjacentHTML('beforeend',
+                    `<article class="visitor">
+                        <h4>${visitor.name}</h4>
+                        <img src="${visitor.image}">
+                        <p>Allergies</p>
+                        <ul>${visitor.allergies.map( (allergy) => `<li>${allergy}</li>`).join('')}</ul>
+                    </article>
+                    `
+                );
+            }
+        }
+    });
+
+async function fetchVisitorList(){
+    let response = await fetch('https://majazocom.github.io/Data/attendees.json');
+    return response.json();
+}
+
