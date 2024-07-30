@@ -1,3 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400..900&display=swap');
+
+:root{
+    font-family: Maven Pro, sans-serif;
+}
+
+
 .dog-list{
     display: flex;
     flex-wrap: wrap;
@@ -40,3 +47,51 @@
         }
     }
 }
+
+body > *:not(.movie-db){
+    display: none;
+}
+
+.movie-db{
+    display: grid;
+
+    > .movie-search-bar{
+        grid-column: 1;
+        grid-row: 1;
+        display: flex;
+        align-items: center;
+
+        > .movie-search{
+            flex: auto;
+            line-height: 2rem;
+            font-size: 1rem;
+        }
+
+        > label {
+            margin-right: 1rem;
+        }
+    }
+
+    > .movie-list{
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+
+        > .movie {   
+            margin: 1rem;
+            width: 20rem; 
+            > h2 {
+                margin: 0;
+            }
+            
+            > img {
+                width: 100%;
+            }
+        }
+
+        > .hidden{
+            display: none;
+        }
+    }
+}
+

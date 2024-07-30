@@ -87,3 +87,36 @@ async function fetchVisitorList(){
     return response.json();
 }
 
+//Exercise 5: Movie list with searchbar
+setup();
+
+function setup(){
+    fetchMovieList()
+        .then((movies) => {
+            let movieList = document.querySelector('.movie-list');
+            for(movie of movies){
+                movieList.insertAdjacentHTML('beforeend',
+                    `<article class="movie">
+                        <h2>${movie.title}</h4>
+                        <img src="${movie.poster}">
+                    </article>
+                    `
+                );
+            }
+
+            document.querySelector('.movie-search').addEventListener('keyup', (e) => {
+                document.querySelectorAll('.movie').forEach((movie) => {
+                    if( movie.querySelector('h2').textContent.search(e.target.value) == -1){
+                        movie.classList.add('hidden');
+                    }else {
+                        movie.classList.remove('hidden');
+                    }
+                })
+            })
+        });
+}
+
+async function fetchMovieList(){
+    let response = await fetch('https://santosnr6.github.io/Data/movies_long.json');
+    return response.json();
+}
