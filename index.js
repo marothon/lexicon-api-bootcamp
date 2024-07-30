@@ -38,3 +38,27 @@ async function fetchDogList(){
     let response = await fetch('https://majazocom.github.io/Data/dogs.json');
     return response.json();
 }
+
+//Exercise 3: Book liist
+fetchBookList()
+    .then((data) => {
+        let bookList = document.querySelector('.book-list');
+        for(book of data){
+            if(book.pages < 500){
+                bookList.insertAdjacentHTML('beforeend',
+                    `<article class="book">
+                        <img src="${book.cover}">
+                        <p>By ${book.author}.</p>
+                        <p>${book.pages} pages</p>
+                        <p>${book.genre.map( (genre) => genre.toUpperCase() ).join(', ')}
+                    </article>
+                    `
+                );
+            }
+        }
+    });
+
+async function fetchBookList(){
+    let response = await fetch('https://majazocom.github.io/Data/books.json');
+    return response.json();
+}
