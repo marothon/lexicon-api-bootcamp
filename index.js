@@ -97,7 +97,7 @@ function setup(){
 
             document.querySelector('.movie-search').addEventListener('keyup', (e) => {
                 document.querySelectorAll('.movie').forEach((movie) => {
-                    if( movie.querySelector('h2').textContent.search(e.target.value) == -1){
+                    if( movie.querySelector('h2').textContent.toLowerCase().indexOf(e.target.value.toLowerCase()) == -1){
                         movie.classList.add('hidden');
                     }else {
                         movie.classList.remove('hidden');
