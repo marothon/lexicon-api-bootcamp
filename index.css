@@ -1,0 +1,16 @@
+.dog-list{
+    display: flex;
+    flex-wrap: wrap;
+
+    .dog{
+        text-align: center;
+        margin: auto;
+        img{
+            border-radius: 50%;
+            aspect-ratio: 1/1;
+            width: 20rem;
+            object-fit: cover;
+            object-position: center;
+        }
+    }
+}
